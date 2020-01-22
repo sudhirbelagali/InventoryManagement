@@ -56,7 +56,13 @@
 
       <ul class="nav navbar-nav navbar-right">        
 
-      	<li id="navDashboard"><a href="product.php"><i class="glyphicon glyphicon-list-alt"></i>  Product</a></li>        
+  <li id="navDashboard"><a href="product.php"><i class="glyphicon glyphicon-list-alt"></i>Product</a></li>
+  <li id="navDashboard"><a href="productDesciption.php"><i class="glyphicon glyphicon-list-alt"></i>ProductDescription</a></li>
+  <li id="navDashboard"><a href="ReceiveProduct.php"><i class="glyphicon glyphicon-list-alt"></i>Receive Product</a></li>
+  <li id="navDashboard"><a href="department.php"><i class="glyphicon glyphicon-list-alt"></i>Departments</a></li>
+	<li id="navDashboard"><a href="transfer.php"><i class="glyphicon glyphicon-list-alt"></i>Transfer</a></li> 
+  
+ 
         <?php if(isset($_SESSION['userId']) && $_SESSION['userId']==1) { ?>
        
 		<?php } ?>
