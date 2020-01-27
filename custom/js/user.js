@@ -19,22 +19,6 @@ $(document).ready(function() {
 		// remove from-group error
 		$(".form-group").removeClass('has-error').removeClass('has-success');
 
-		$("#productImage").fileinput({
-	      overwriteInitial: true,
-		    maxFileSize: 2500,
-		    showClose: false,
-		    showCaption: false,
-		    browseLabel: '',
-		    removeLabel: '',
-		    browseIcon: '<i class="glyphicon glyphicon-folder-open"></i>',
-		    removeIcon: '<i class="glyphicon glyphicon-remove"></i>',
-		    removeTitle: 'Cancel or reset changes',
-		    elErrorContainer: '#kv-avatar-errors-1',
-		    msgErrorClass: 'alert alert-block alert-danger',
-		    defaultPreviewContent: '<img src="assests/images/photo_default.png" alt="Profile Image" style="width:100%;">',
-		    layoutTemplates: {main2: '{preview} {remove} {browse}'},								    
-	  		allowedFileExtensions: ["jpg", "png", "gif", "JPG", "PNG", "GIF"]
-			});   
 
 		// submit product form
 		$("#submitUserForm").unbind('submit').bind('submit', function() {
@@ -397,33 +381,3 @@ function removeUser(userid = null) {
 		}); // /remove product btn clicked
 	} // /if userid
 } // /remove product function
-
-function clearForm(oForm) {
-	// var frm_elements = oForm.elements;									
-	// console.log(frm_elements);
-	// 	for(i=0;i<frm_elements.length;i++) {
-	// 		field_type = frm_elements[i].type.toLowerCase();									
-	// 		switch (field_type) {
-	// 	    case "text":
-	// 	    case "password":
-	// 	    case "textarea":
-	// 	    case "hidden":
-	// 	    case "select-one":	    
-	// 	      frm_elements[i].value = "";
-	// 	      break;
-	// 	    case "radio":
-	// 	    case "checkbox":	    
-	// 	      if (frm_elements[i].checked)
-	// 	      {
-	// 	          frm_elements[i].checked = false;
-	// 	      }
-	// 	      break;
-	// 	    case "file": 
-	// 	    	if(frm_elements[i].options) {
-	// 	    		frm_elements[i].options= false;
-	// 	    	}
-	// 	    default:
-	// 	        break;
-	//     } // /switch
-	// 	} // for
-}

@@ -1,72 +1,159 @@
-<?php
-require_once('php_action/db_connect.php'); 
-?>
-<html>
-<head><title>Product Transfer</title></head>
-<body>
-<form action="php_action/transferAction.php" method="post">
-<fieldset>
-<legend>Product Transfer</legend>
-<p><label>Select Product</label>
-<?php
-echo "<select name='product'>";
-$sql = "SELECT * FROM product";
-$result = $connect->query($sql);
-if ($result->num_rows > 0) {
-// output data of each row
-while($row = $result->fetch_assoc()) {
-    echo "<option value='" . $row['productid'] . "'>" .$row['productName'] . "</option>";
-}
-}
-echo "</select>";
-?>
+<?php require_once 'php_action/db_connect.php' ?>
+<?php require_once 'includes/header.php'; ?>
 
-</p>
-<p><label>Product Description</label>
-<?php
-echo "<select name='productDescription'>";
-$sql = "SELECT * FROM productDescription";
-$result = $connect->query($sql);
-if ($result->num_rows > 0) {
-// output data of each row
-while($row = $result->fetch_assoc()) {
-    echo "<option value='" . $row['productDescription'] . "'>" .$row['productDescription'] . "</option>";
-}
-}
-echo "</select>";
-?>
-</p>
+<div class="row">
+	<div class="col-md-12">
 
-<p>
-<label>Transfer to<label>
-<?php
-echo "<select name='department'>";
-$sql = "SELECT * FROM department";
-$result = $connect->query($sql);
-if ($result->num_rows > 0) {
-// output data of each row
-while($row = $result->fetch_assoc()) {
-    echo "<option value='" . $row['departmentId'] . "'>" . $row['departmentName'] . "</option>";
-}
-}
-echo "</select>";
-?>
-</p>
-<p>
-<label for="">Quantity</label>
-<input type="number" name="quantity" placeholder="Enter Quantity" class="form-controls" id="quantity">
-</p>
-<p>
-<label for="">Date</label>
-<input type="text" name="date" id="date" class="form-controls">
-</p>
-<p>
-<label for="">Remarks</label>
-<input type="text" name="remarks" id="remarks" class="form-controls">
-</p>
+		<ol class="breadcrumb">
+		  <li><a href="dashboard.php">Home</a></li>		  
+		  <li class="active">Stock Transfer</li>
+		</ol>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<div class="page-heading"> <i class="glyphicon glyphicon-edit"></i>Move Stocks</div>
+			</div> <!-- /panel-heading -->
+			<div class="panel-body">
 
-<p><input type="submit" value="submit" name="submit" /></p>
-</fieldset>
-</form>
-</body>
-</html>
+				<div class="remove-messages"></div>
+
+				<div class="div-action pull pull-right" style="padding-bottom:20px;">
+					<button class="btn btn-default button1" data-toggle="modal" id="addProductModalBtn" data-target="#moveProductModal"> <i class="glyphicon glyphicon-plus-sign"></i> Transfer Product</button>
+				</div> <!-- /div-action -->				
+				
+
+
+			</div> <!-- /panel-body -->
+		</div> <!-- /panel -->		
+
+	</div> <!-- /col-md-12 -->
+</div> <!-- /row -->
+
+<!-- add product -->
+<div class="modal fade" id="moveProductModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+    	<form class="form-horizontal" id="submitTransferForm" action="php_action/transferAction.php" method="POST">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title"><i class="fa fa-plus"></i> Transfer Product</h4>
+	      </div>
+
+	      <div class="modal-body" style="max-height:450px; overflow:auto;">
+
+	      	<div id="add-product-messages"></div>
+
+	        <div class="form-group">
+	        	<label for="product" class="col-sm-3 control-label">Select Product</label>
+	        	<label class="col-sm-1 control-label">: </label>
+				    <div class="col-sm-8">
+                    <?php
+                    echo "<select name='product'>";
+                    $sql = "SELECT * FROM product";
+                    $result = $connect->query($sql);
+                    if ($result->num_rows > 0) {
+                    // output data of each row
+                    while($row = $result->fetch_assoc()) {
+                        echo "<option value='" . $row['productid'] . "'>" .$row['productName'] . "</option>";
+                        }
+                    }
+                    echo "</select>";
+                    ?>
+				    </div>
+	        </div> <!-- /form-group-->	     
+
+             <div class="form-group">
+	        	<label for="productDescription" class="col-sm-3 control-label">Product Description</label>
+	        	<label class="col-sm-1 control-label">: </label>
+				    <div class="col-sm-8">
+                    <?php
+                    echo "<select name='productDescription'>";
+                    $sql = "SELECT * FROM productDescription";
+                    $result = $connect->query($sql);
+                    if ($result->num_rows > 0) {
+                    // output data of each row
+                    while($row = $result->fetch_assoc()) {
+                        echo "<option value='" . $row['descriptionid'] . "'>" .$row['productDescription'] . "</option>";
+                    }
+                    }
+                    echo "</select>";
+                    ?>
+				    </div>
+	        </div> <!-- /form-group-->	        
+
+            <div class="form-group">
+	        	<label for="department" class="col-sm-3 control-label">Transfer to </label>
+	        	<label class="col-sm-1 control-label">: </label>
+				    <div class="col-sm-8">
+                    <?php
+                    echo "<select name='department'>";
+                    $sql = "SELECT * FROM department";
+                    $result = $connect->query($sql);
+                    if ($result->num_rows > 0) {
+                    // output data of each row
+                    while($row = $result->fetch_assoc()) {
+                        echo "<option value='" . $row['departmentId'] . "'>" . $row['departmentName'] . "</option>";
+                    }
+                    }
+                    echo "</select>";
+                    ?>
+				    </div>
+	        </div> <!-- /form-group-->	  
+
+			<div class="form-group">
+	        	<label for="availablequantity" class="col-sm-3 control-label">Available Quantity: </label>
+	        	<label class="col-sm-1 control-label">: </label>
+				    <div class="col-sm-8">
+					<?php
+                    $sql = "SELECT quantity FROM receivedProducts where productid=1 and productDescription=1";
+					$result = $connect->query($sql);
+                    if ($result->num_rows > 0) {
+						while($row = $result->fetch_assoc()) {  
+						$availableQuantity = $row['quantity'];
+						}
+					}?>
+					<input type="text" name="availablequantity" readonly value="<?php echo $availableQuantity ?>" id="availablequantity">
+                </div>
+	        </div> <!-- /form-group-->	      
+
+
+            <div class="form-group">
+	        	<label for="quantity" class="col-sm-3 control-label">Quantity: </label>
+	        	<label class="col-sm-1 control-label">: </label>
+				    <div class="col-sm-8">
+                    <input type="number" name="quantity" placeholder="Enter Quantity" id="quantity">
+				    </div>
+	        </div> <!-- /form-group-->	      
+
+            <div class="form-group">
+	        	<label for="startDate" class="col-sm-3 control-label">Date: </label>
+	        	<label class="col-sm-1 control-label">: </label>
+				    <div class="col-sm-8">
+                    <input type="text" name="date" id="startDate" class="form-controls">
+				    </div>
+	        </div> <!-- /form-group-->	    
+
+            <div class="form-group">
+	        	<label for="remarks" class="col-sm-3 control-label">Remarks: </label>
+	        	<label class="col-sm-1 control-label">: </label>
+				    <div class="col-sm-8">
+                    <textarea name="remarks" id="remarks" cols="30" rows="5"></textarea>
+				    </div>
+	        </div> <!-- /form-group-->	 
+
+
+
+	      </div> <!-- /modal-body -->
+	      
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal"> <i class="glyphicon glyphicon-remove-sign"></i> Close</button>
+	        
+	        <button type="submit" class="btn btn-primary" id="createProductBtn" data-loading-text="Loading..." autocomplete="off"> <i class="glyphicon glyphicon-ok-sign"></i> Save Changes</button>
+	      </div> <!-- /modal-footer -->	      
+     	</form> <!-- /.form -->	     
+    </div> <!-- /modal-content -->    
+  </div> <!-- /modal-dailog -->
+</div> 
+
+<script src="custom/js/transfer.js"></script>
+<?php require_once 'includes/footer.php'; ?>

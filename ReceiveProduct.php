@@ -13,15 +13,10 @@
 				<div class="page-heading"> <i class="glyphicon glyphicon-edit"></i> Manage Product</div>
 			</div> <!-- /panel-heading -->
 			<div class="panel-body">
-
 				<div class="remove-messages"></div>
-
 				<div class="div-action pull pull-right" style="padding-bottom:20px;">
 					<button class="btn btn-default button1" data-toggle="modal" id="addProductModalBtn" data-target="#addProductModal"> <i class="glyphicon glyphicon-plus-sign"></i> Add Product </button>
 				</div> <!-- /div-action -->				
-				
-
-
 			</div> <!-- /panel-body -->
 		</div> <!-- /panel -->		
 
@@ -49,17 +44,17 @@
 				    <div class="col-sm-8">
 
 					<?php
-echo "<select class='form-control' id='productName' name='productName'>";
-$sql = "SELECT * FROM product";
-$result = $connect->query($sql);
-if ($result->num_rows > 0) {
-// output data of each row
-while($row = $result->fetch_assoc()) {
-    echo "<option value='" . $row['productid'] . "'>" . $row['productName'] . "</option>";
-}
-}
-echo "</select>";
-?>
+						echo "<select class='form-control' id='productName' name='productName'>";
+						$sql = "SELECT * FROM product";
+						$result = $connect->query($sql);
+						if ($result->num_rows > 0) {
+						// output data of each row
+						while($row = $result->fetch_assoc()) {
+							echo "<option value='" . $row['productid'] . "'>" . $row['productName'] . "</option>";
+						}
+						}
+						echo "</select>";
+						?>
 				    </div>
 	        </div> <!-- /form-group-->	    
 
@@ -68,17 +63,17 @@ echo "</select>";
 	        	<label class="col-sm-1 control-label">: </label>
 				    <div class="col-sm-8">
 					<?php
-echo "<select class='form-control' id='productDescription' name='productDescription'>";
-$sql = "SELECT * FROM productDescription";
-$result = $connect->query($sql);
-if ($result->num_rows > 0) {
-// output data of each row
-while($row = $result->fetch_assoc()) {
-    echo "<option value='" . $row['productDescription'] . "'>" . $row['productDescription'] . "</option>";
-}
-}
-echo "</select>";
-?>
+						echo "<select class='form-control' id='productDescription' name='productDescription'>";
+						$sql = "SELECT * FROM productDescription";
+						$result = $connect->query($sql);
+						if ($result->num_rows > 0) {
+						// output data of each row
+						while($row = $result->fetch_assoc()) {
+							echo "<option value='" . $row['descriptionid'] . "'>" . $row['productDescription'] . "</option>";
+						}
+						}
+						echo "</select>";
+						?>
 				      
 				    </div>
 	        </div> <!-- /form-group-->	    
@@ -119,7 +114,7 @@ echo "</select>";
 	        	<label for="startDate" class="col-sm-3 control-label">Date of Receipt: </label>
 	        	<label class="col-sm-1 control-label">: </label>
 				    <div class="col-sm-8">
-				      <input type="text" class="form-control" id="startDate"placeholder="Date of Receipt" name="dateofreceipt" autocomplete="off">
+				      <input type="text" class="form-control" id="startDate" placeholder="Date of Receipt" name="dateofreceipt" autocomplete="off">
 				    </div>
 	        </div> <!-- /form-group-->
 

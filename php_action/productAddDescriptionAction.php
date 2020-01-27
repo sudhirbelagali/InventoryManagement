@@ -3,7 +3,7 @@ require_once 'core.php';
 if($_POST) {	
     $productid = $_POST['productid'];
     $productDescription = $_POST['productDescription'];
-    $sql = "INSERT INTO productDescription(productid, productDescription) VALUES ('$productid', '$productDescription')";
+    $sql = "INSERT INTO productDescription(descriptionid, productid, productDescription) VALUES (DEFAULT, '$productid', '$productDescription')";
     if ($connect->query($sql) === TRUE) {
 		echo "<p>Product Description added successfully</p>";
 	} else {

@@ -1,19 +1,22 @@
 <?php 	
+
 require_once 'core.php';
+
+$valid['success'] = array('success' => false, 'messages' => array());
+
 if($_POST) {	
     $productName = $_POST['productName'];
     $sql = "INSERT INTO product(productid, productName) VALUES (DEFAULT, '$productName')";
     
 
     if ($connect->query($sql) === TRUE) {
-		echo "<p>New Product added successfully</p>";
+		echo "<script>alert('Successfully Added!');</script>";
+		header("Refresh:0; url=/inventory/dashboard.php", true, 30);
 	} else {
-		echo "Error: " . $Query . "<br>" . $conn->error;
+		echo "<script>alert('Error while adding the product!');</script>";
+		header("Refresh:0; url=/inventory/dashboard.php", true, 30);
 	}
 	$connect->close();
-	echo " you will be redirected to dashboard page in 3 seconds....";
-    header( "Refresh:3; url=/inventory/dashboard.php", true, 303);
-
 }
 
 ?>
