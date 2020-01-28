@@ -5,13 +5,13 @@ if($_POST) {
     $productDescription = $_POST['productDescription'];
     $sql = "INSERT INTO productDescription(descriptionid, productid, productDescription) VALUES (DEFAULT, '$productid', '$productDescription')";
     if ($connect->query($sql) === TRUE) {
-		echo "<p>Product Description added successfully</p>";
+		echo "<script>alert('Successfully Added!');</script>";
+		header("Refresh:0; url=/inventory/dashboard.php", true, 30);
 	} else {
-		echo "Error: " . $Query . "<br>" . $conn->error;
+		echo "<script>alert('Error while adding the product!');</script>";
+		header("Refresh:0; url=/inventory/dashboard.php", true, 30);
 	}
 	$connect->close();
-	echo " you will be redirected to dashboard page in 3 seconds....";
-    header( "Refresh:3; url=/inventory/dashboard.php", true, 303);
 
 }
 

@@ -8,7 +8,7 @@ if($_POST) {
     $dated = $_POST['date'];
 	$remarks = $_POST['remarks'];
 				
-$sql = "INSERT INTO transfers(transferId,productid, productDescription,department, quantity,dated, remarks) VALUES (DEFAULT,$productid, '$productDescription','$department','$quantity', '$dated','$remarks')";
+$sql = "INSERT INTO transfers(transferId,productid, productDescription,department, quantity,dated, remarks) VALUES (DEFAULT,$productid, '$productDescription',$department,'$quantity', '$dated','$remarks')";
 if ($connect->query($sql) === TRUE) {
 	echo "<p>New Transaction added successfully</p>";
 } else {

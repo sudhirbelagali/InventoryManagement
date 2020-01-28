@@ -137,7 +137,7 @@
 			        	<label for="editProductId" class="col-sm-3 control-label">Product ID: </label>
 			        	<label class="col-sm-1 control-label">: </label>
 						    <div class="col-sm-8">
-						      <input type="text" class="form-control" id="editProductId" placeholder="Product ID" name="editProductId" autocomplete="off">
+						      <input type="text" readonly class="form-control" id="editProductId" placeholder="Product ID" name="editProductId" autocomplete="off">
 						    </div>
 				        </div> <!-- /form-group-->	    
 

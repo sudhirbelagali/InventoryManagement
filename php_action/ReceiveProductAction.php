@@ -18,7 +18,7 @@ if($_POST) {
 	$typeofproduct = $_POST['type'];
 	$remarks = $_POST['remarks'];
 				
-$sql = "INSERT INTO receivedProducts(productid, productDescription, quantity, rate, cost, SupplierDetails, dateofreceipt, receiptnumber, referencenumber, type, remarks) VALUES ('$productid', '$productDescription','$quantity', '$rate', '$cost', '$SupplierDetails', '$dateofreceipt','$receiptnumber','$referencenumber','$typeofproduct','$remarks')";
+$sql = "INSERT INTO receivedProducts(receiveId, productid, productDescription, quantity, rate, cost, SupplierDetails, dateofreceipt, receiptnumber, referencenumber, type, remarks) VALUES (DEFAULT, '$productid', $productDescription,'$quantity', '$rate', '$cost', '$SupplierDetails', '$dateofreceipt','$receiptnumber','$referencenumber','$typeofproduct','$remarks')";
 if ($connect->query($sql) === TRUE) {
 	echo "<p>New Transaction added successfully</p>";
 } else {
