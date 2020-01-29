@@ -18,7 +18,7 @@
 					<button class="btn btn-default button1" data-toggle="modal" id="addProductModalBtn" data-target="#addProductModal"> <i class="glyphicon glyphicon-plus-sign"></i> Receive Product </button>
 				</div> <!-- /div-action -->		
 
-				<table class="table" id="manageProductTable">
+				<table class="table" id="manageBrandTable">
 				<thead>
 						<tr>							
 							<th>Receive Id</th>
@@ -45,8 +45,8 @@
 				 while($row = $result->fetch_array()) {
 					 ?>
 					 <tr>
-					 <td id="<?php echo $row['receiveId']?>"><?php echo $row['receiveId']?></td>
-					 <td><?php echo $row['productid']?></td>
+					 <td ><?php echo $row['receiveId']?></td>
+					 <td id="<?php echo $row['productid']?>"><?php echo $row['productid']?></td>
 					 <td><?php echo $row['productDescription']?></td>
 					 <td><?php echo $row['quantity']?></td>
 					 <td><?php echo $row['rate']?></td>
@@ -225,6 +225,169 @@
   </div> <!-- /modal-dailog -->
 </div> 
 
-<script src="custom/js/report.js"></script>
+<!-- edit categories brand -->
+<div class="modal fade" id="editProductModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    	    	
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title"><i class="fa fa-edit"></i> Edit Received Product</h4>
+	      </div>
+	      <div class="modal-body" style="max-height:450px; overflow:auto;">
+
+	      	<div class="div-loading">
+	      		<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+						<span class="sr-only">Loading...</span>
+	      	</div>
+	      	<div class="div-result">
+
+				    <div role="tabpanel" class="tab-pane" id="productInfo">
+				    	<form class="form-horizontal" id="editProductForm" action="php_action/editReceivedProduct.php" method="POST">
+				    	<br />
+
+				    	<div id="edit-product-messages"></div>
+
+						<div class="form-group">
+			        	<label for="editReceiveId" class="col-sm-3 control-label">Receive ID: </label>
+			        	<label class="col-sm-1 control-label">: </label>
+						    <div class="col-sm-8">
+						      <input type="text" class="form-control" id="editReceiveId" placeholder="Receive Id" name="editReceiveId" autocomplete="off">
+						    </div>
+				        </div> <!-- /form-group-->	 
+
+
+				    	<div class="form-group">
+			        	<label for="editProductId" class="col-sm-3 control-label">Product ID: </label>
+			        	<label class="col-sm-1 control-label">: </label>
+						    <div class="col-sm-8">
+						      <input type="text" readonly class="form-control" id="editProductId" placeholder="Product ID" name="editProductId" autocomplete="off">
+						    </div>
+				        </div> <!-- /form-group-->	    
+
+						<div class="form-group">
+			        	<label for="editProductDescription" class="col-sm-3 control-label">Product Description: </label>
+			        	<label class="col-sm-1 control-label">: </label>
+						    <div class="col-sm-8">
+						      <input type="text" class="form-control" id="editProductDescription" placeholder="Product Description" name="editProductDescription" autocomplete="off">
+						    </div>
+				        </div> <!-- /form-group-->	 
+
+				        <div class="form-group">
+			        	<label for="editQuantity" class="col-sm-3 control-label">Quantity : </label>
+			        	<label class="col-sm-1 control-label">: </label>
+						    <div class="col-sm-8">
+						      <input type="text" class="form-control" id="editQuantity" placeholder="Quantity" name="editQuantity" autocomplete="off">
+						    </div>
+				        </div> <!-- /form-group-->	   
+
+				        <div class="form-group">
+			        	<label for="editRate" class="col-sm-3 control-label">Rate: </label>
+			        	<label class="col-sm-1 control-label">: </label>
+						    <div class="col-sm-8">
+						      <input type="text" class="form-control" id="editRate" placeholder="Rate" name="editRate" autocomplete="off">
+						    </div>
+				        </div> <!-- /form-group-->	 
+
+				        <div class="form-group">
+			        	<label for="editCost" class="col-sm-3 control-label">Cost : </label>
+			        	<label class="col-sm-1 control-label">: </label>
+						    <div class="col-sm-8">
+						      <input type="text" class="form-control" id="editCost" placeholder="Cost" name="editCost" autocomplete="off">
+						    </div>
+				        </div> <!-- /form-group-->	
+
+						<div class="form-group">
+			        	<label for="editSupplierDetails" class="col-sm-3 control-label">Supplier Details : </label>
+			        	<label class="col-sm-1 control-label">: </label>
+						    <div class="col-sm-8">
+							<textarea name="editSupplierDetails" id="editSupplierDetails" cols="30" rows="10"></textarea>
+						    </div>
+				        </div> <!-- /form-group-->	
+
+						<div class="form-group">
+			        	<label for="editDateOfReceipt" class="col-sm-3 control-label">Date of Receipt : </label>
+			        	<label class="col-sm-1 control-label">: </label>
+						    <div class="col-sm-8">
+						      <input type="text" class="form-control" id="editDateOfReceipt" placeholder="Date of Receipt" name="editDateOfReceipt" autocomplete="off">
+						    </div>
+				        </div> <!-- /form-group-->
+
+						<div class="form-group">
+			        	<label for="editReceiptNumber" class="col-sm-3 control-label">Receipt Number: </label>
+			        	<label class="col-sm-1 control-label">: </label>
+						    <div class="col-sm-8">
+						      <input type="text" class="form-control" id="editReceiptNumber" placeholder="Receipt Number" name="editReceiptNumber" autocomplete="off">
+						    </div>
+				        </div> <!-- /form-group-->
+
+						<div class="form-group">
+			        	<label for="editReferenceNumber" class="col-sm-3 control-label">Reference Number: </label>
+			        	<label class="col-sm-1 control-label">: </label>
+						    <div class="col-sm-8">
+						      <input type="text" class="form-control" id="editReferenceNumber" placeholder="Reference Number" name="editReferenceNumber" autocomplete="off">
+						    </div>
+				        </div> <!-- /form-group-->
+
+						<div class="form-group">
+			        	<label for="editTypeOfProduct" class="col-sm-3 control-label">Type of the product</label>
+			        	<label class="col-sm-1 control-label">: </label>
+						    <div class="col-sm-8">
+									<select class="form-control" name="editTypeOfProduct" id="editTypeOfProduct">
+									<option selected>Consumable</option>
+									<option>Non Consumable</option>
+									</select>
+						    </div>
+				        </div> <!-- /form-group-->
+
+						<div class="form-group">
+			        	<label for="editRemarks" class="col-sm-3 control-label">Remarks : </label>
+			        	<label class="col-sm-1 control-label">: </label>
+						    <div class="col-sm-8">
+						      <input type="text" class="form-control" id="editRemarks" placeholder="Remarks" name="editRemarks" autocomplete="off">
+						    </div>
+				        </div> <!-- /form-group-->
+
+			    	    <div class="modal-footer editProductFooter">
+				        <button type="button" class="btn btn-default" data-dismiss="modal"> <i class="glyphicon glyphicon-remove-sign"></i> Close</button>
+				        <button type="submit" class="btn btn-success" id="editProductBtn" data-loading-text="Loading..."> <i class="glyphicon glyphicon-ok-sign"></i> Save Changes</button>
+				     	</div> <!-- /modal-footer -->				     
+			       		</form> <!-- /.form -->				     	
+				    	<!-- /product info -->
+					</div>
+				</div>
+	      </div> <!-- /modal-body -->
+    </div>
+    <!-- /modal-content -->
+  </div>
+  <!-- /modal-dailog -->
+</div>
+<!-- /categories brand -->
+
+<!-- categories brand -->
+<div class="modal fade" tabindex="-1" role="dialog" id="removeProductModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"><i class="glyphicon glyphicon-trash"></i> Remove Product</h4>
+      </div>
+      <div class="modal-body">
+
+      	<div class="removeProductMessages"></div>
+
+        <p>Do you really want to remove ?</p>
+      </div>
+      <div class="modal-footer removeProductFooter">
+        <button type="button" class="btn btn-default" data-dismiss="modal"> <i class="glyphicon glyphicon-remove-sign"></i> Close</button>
+        <button type="button" class="btn btn-primary" id="removeProductBtn" data-loading-text="Loading..."> <i class="glyphicon glyphicon-ok-sign"></i> Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- /categories brand -->
+
+
+<script src="custom/js/receiveProduct.js"></script>
 
 <?php require_once 'includes/footer.php'; ?>

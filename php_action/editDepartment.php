@@ -5,11 +5,11 @@ require_once 'core.php';
 $valid['success'] = array('success' => false, 'messages' => array());
 
 if($_POST) {
-	$productId = $_POST['editProductId'];
-	$productName = $_POST['editProductName']; 
+	$productId = $_POST['editDepartmentId'];
+	$productName = $_POST['editDepartmentName']; 
 
 				
-	$sql = "UPDATE product SET productName = '$productName' WHERE productid = $productId ";
+	$sql = "UPDATE department SET departmentName = '$productName' WHERE departmentid = $productId ";
 
 	if($connect->query($sql) === TRUE) {
 		$valid['success'] = true;

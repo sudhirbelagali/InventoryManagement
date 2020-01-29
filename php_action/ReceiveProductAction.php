@@ -20,11 +20,14 @@ if($_POST) {
 				
 $sql = "INSERT INTO receivedProducts(receiveId, productid, productDescription, quantity, rate, cost, SupplierDetails, dateofreceipt, receiptnumber, referencenumber, type, remarks) VALUES (DEFAULT, '$productid', $productDescription,'$quantity', '$rate', '$cost', '$SupplierDetails', '$dateofreceipt','$receiptnumber','$referencenumber','$typeofproduct','$remarks')";
 if ($connect->query($sql) === TRUE) {
-	echo "<p>New Transaction added successfully</p>";
+	echo "<script>alert('Successfully Added!');</script>";
+	header("Refresh:0; url=/inventory/ReceiveProduct.php", true, 30);
+	header("Refresh:0");
 } else {
-	echo "Error: " . $Query . "<br>" . $conn->error;
+	echo "<script>alert('Error while adding the product!');</script>";
+	header("Refresh:0; url=/inventory/ReceiveProduct.php", true, 30);
+	header("Refresh:0");
 }
+
 $connect->close();
-echo "<p>you will be redirected to dashboard page in 3 seconds....</p>";
-header( "Refresh:3; url=/inventory/dashboard.php", true, 303);
 }
