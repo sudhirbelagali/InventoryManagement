@@ -10,44 +10,38 @@ $(document).ready(function() {
 	}); // manage categories Data Table
 
 	// on click on submit categories form modal
-	$('#addDepartmentModal').unbind('click').bind('click', function() {
+	$('#addProductModalBtn').unbind('click').bind('click', function() {
 		// reset the form text
-		$("#submitCategoriesForm")[0].reset();
+		$("#submitProductForm")[0].reset();
 		// remove the error text
 		$(".text-danger").remove();
 		// remove the form error
 		$('.form-group').removeClass('has-error').removeClass('has-success');
 
 		// submit categories form function
-		$("#submitCategoriesForm").unbind('submit').bind('submit', function() {
+		$('#submitProductForm').unbind('submit').bind('submit', function() {
 
-			var categoriesName = $("#categoriesName").val();
-			var categoriesStatus = $("#categoriesStatus").val();
+			var categoriesName = $("#departmentName").val();
+			// var categoriesName =  document.getElementById("#departmentNameId").innerHTML;
+			console.log(categoriesName);			
 
 			if(categoriesName == "") {
-				$("#categoriesName").after('<p class="text-danger">Brand Name field is required</p>');
-				$('#categoriesName').closest('.form-group').addClass('has-error');
+				$("#departmentName").after('<p class="text-danger">Department Name field is required</p>');
+				$('#departmentName').closest('.form-group').addClass('has-error');
 			} else {
 				// remov error text field
-				$("#categoriesName").find('.text-danger').remove();
+				$("#departmentName").find('.text-danger').remove();
 				// success out for form 
-				$("#categoriesName").closest('.form-group').addClass('has-success');	  	
+				$("#departmentName").closest('.form-group').addClass('has-success');	  	
 			}
+			console.log(categoriesName);
+			
 
-			if(categoriesStatus == "") {
-				$("#categoriesStatus").after('<p class="text-danger">Brand Name field is required</p>');
-				$('#categoriesStatus').closest('.form-group').addClass('has-error');
-			} else {
-				// remov error text field
-				$("#categoriesStatus").find('.text-danger').remove();
-				// success out for form 
-				$("#categoriesStatus").closest('.form-group').addClass('has-success');	  	
-			}
 
-			if(categoriesName && categoriesStatus) {
+			if(categoriesName) {
 				var form = $(this);
 				// button loading
-				$("#createCategoriesBtn").button('loading');
+				$("#createProductBtn").button('loading');
 
 				$.ajax({
 					url : form.attr('action'),
@@ -56,20 +50,20 @@ $(document).ready(function() {
 					dataType: 'json',
 					success:function(response) {
 						// button loading
-						$("#createCategoriesBtn").button('reset');
+						$("#createProductBtn").button('reset');
 
 						if(response.success == true) {
 							// reload the manage member table 
 							manageCategoriesTable.ajax.reload(null, false);						
 
 	  	  			// reset the form text
-							$("#submitCategoriesForm")[0].reset();
+							$("#submitProductForm")[0].reset();
 							// remove the error text
 							$(".text-danger").remove();
 							// remove the form error
 							$('.form-group').removeClass('has-error').removeClass('has-success');
 	  	  			
-	  	  			$('#add-categories-messages').html('<div class="alert alert-success">'+
+	  	  			$('#add-product-messages').html('<div class="alert alert-success">'+
 	            '<button type="button" class="close" data-dismiss="alert">&times;</button>'+
 	            '<strong><i class="glyphicon glyphicon-ok-sign"></i></strong> '+ response.messages +
 		          '</div>');
@@ -108,7 +102,9 @@ function editDepartment(productId = null) {
 			type: 'post',
 			data: {productId: productId},
 			dataType: 'json',
-			success:function(response) {		
+			success:function(response) {
+				console.log("in the edit");
+						
 			// alert(response.product_image);
 				// modal spinner
 				$('.div-loading').addClass('div-hide');
@@ -178,8 +174,8 @@ function editDepartment(productId = null) {
 										});
 									}); // /.alert
 
-				          // reload the manage student table
-								//	manageProductTable.ajax.reload(null, true);
+				        //   reload the manage student table
+						manageCategoriesTable.ajax.reload(null, true);
 
 									// remove text-error 
 									$(".text-danger").remove();
@@ -205,14 +201,14 @@ function editDepartment(productId = null) {
 } // /edit product function
 
 // remove product 
-function removeProduct(productId = null) {
+function removeDepartment(productId = null) {
 	if(productId) {
 		// remove product button clicked
 		$("#removeProductBtn").unbind('click').bind('click', function() {
 			// loading remove button
 			$("#removeProductBtn").button('loading');
 			$.ajax({
-				url: 'php_action/removeProduct.php',
+				url: 'php_action/removeDepartment.php',
 				type: 'post',
 				data: {productId: productId},
 				dataType: 'json',
@@ -222,6 +218,9 @@ function removeProduct(productId = null) {
 					if(response.success == true) {
 						// remove product modal
 						$("#removeProductModal").modal('hide');
+						
+						// reload the manage member table 						
+						manageCategoriesTable.ajax.reload(null, false);	
 
 						// update the product table
 						//manageProductTable.ajax.reload(null, false);

@@ -14,7 +14,7 @@
 			</div> <!-- /panel-heading -->
 			<div class="panel-body">
 
-				<div class="remove-messages"></div>
+
 
 				<div class="div-action pull pull-right" style="padding-bottom:20px;">
 					<button class="btn btn-default button1" data-toggle="modal" id="addProductModalBtn" data-target="#addDepartmentModal"> <i class="glyphicon glyphicon-plus-sign"></i> Add Department</button>
@@ -56,7 +56,7 @@
 	        	<label for="departmentName" class="col-sm-3 control-label">Department Name: </label>
 	        	<label class="col-sm-1 control-label">: </label>
 				    <div class="col-sm-8">
-                    <input type="text" name="departmentName" id="departmentName" placeholder="Enter Department Name">
+                    <input type="text" id="departmentName" name="departmentName" placeholder="Enter Department Name">
 				    </div>
 	        </div> <!-- /form-group-->	        	 
 
@@ -64,7 +64,6 @@
 	      
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal"> <i class="glyphicon glyphicon-remove-sign"></i> Close</button>
-	        
 	        <button type="submit" class="btn btn-primary" id="createProductBtn" data-loading-text="Loading..." autocomplete="off"> <i class="glyphicon glyphicon-ok-sign"></i> Save Changes</button>
 	      </div> <!-- /modal-footer -->	      
      	</form> <!-- /.form -->	     
@@ -73,7 +72,7 @@
 </div> 
 
 <!-- edit categories brand -->
-<div class="modal fade" id="editDepartmentModalBtn" tabindex="-1" role="dialog">
+<div class="modal fade" id="editDepartmentModal" tabindex="-1" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
     	    	
@@ -145,7 +144,7 @@
       </div>
       <div class="modal-body">
 
-      	<div class="removeProductMessages"></div>
+	  <div class="remove-messages"></div>
 
         <p>Do you really want to remove ?</p>
       </div>

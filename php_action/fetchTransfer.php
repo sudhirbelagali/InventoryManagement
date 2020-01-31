@@ -2,7 +2,7 @@
 
 require_once 'core.php';
 
-$sql = "SELECT * FROM department";
+$sql = "SELECT * FROM transfers";
 $result = $connect->query($sql);
 
 $output = array('data' => array());
@@ -25,6 +25,11 @@ if($result->num_rows > 0) {
  	$output['data'][] = array( 		
 		$row[0],
 		$row[1],
+		$row[2],
+		$row[3],
+		$row[4],
+		$row[5],
+		$row[6],
  		$button 		
  		); 	
  } // /while 

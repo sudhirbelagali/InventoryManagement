@@ -5,7 +5,7 @@ $productId = $_POST['productId'];
 
 if($productId) { 
 
- $sql = "DELETE from department WHERE departmentId = $productId";
+ $sql = "DELETE from transfers WHERE transferId = $productId";
 
  if($connect->query($sql) === TRUE) {
  	$valid['success'] = true;

@@ -9,12 +9,17 @@ if($_POST) {
 	$remarks = $_POST['remarks'];
 				
 $sql = "INSERT INTO transfers(transferId,productid, productDescription,department, quantity,dated, remarks) VALUES (DEFAULT,$productid, '$productDescription',$department,'$quantity', '$dated','$remarks')";
-if ($connect->query($sql) === TRUE) {
-	echo "<p>New Transaction added successfully</p>";
+
+if($connect->query($sql) === TRUE) {
+    $valid['success'] = true;
+   $valid['messages'] = "Successfully Added";		
 } else {
-	echo "Error: " . $Query . "<br>" . $conn->error;
+    $valid['success'] = false;
+    $valid['messages'] = "Error while remove the user";
 }
+
 $connect->close();
-echo "<p>you will be redirected to dashboard page in 3 seconds....</p>";
-header( "Refresh:3; url=/inventory/dashboard.php", true, 303);
-}
+
+echo json_encode($valid);
+
+} // /if $_POST
