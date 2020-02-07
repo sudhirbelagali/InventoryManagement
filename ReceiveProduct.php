@@ -18,7 +18,14 @@
 					<button class="btn btn-default button1" data-toggle="modal" id="addProductModalBtn" data-target="#addProductModal"> <i class="glyphicon glyphicon-plus-sign"></i> Receive Product </button>
 				</div> <!-- /div-action -->		
 
-				<table class="table" id="manageBrandTable">
+
+
+
+			</div> <!-- /panel-body -->
+		</div> <!-- /panel -->		
+
+	</div> <!-- /col-md-12 -->
+	<table class="table" id="manageProductsTable">
 				<thead>
 						<tr>							
 							<th>Receive Id</th>
@@ -37,50 +44,8 @@
 						</tr>
 				</thead>
 
-				<?php 
-				$sql = "SELECT * FROM `receivedProducts`";				
-				$result = $connect->query($sql);				
-				$output = array('data' => array());				
-				if($result->num_rows > 0) { 
-				 while($row = $result->fetch_array()) {
-					 ?>
-					 <tr>
-					 <td ><?php echo $row['receiveId']?></td>
-					 <td id="<?php echo $row['productid']?>"><?php echo $row['productid']?></td>
-					 <td><?php echo $row['productDescription']?></td>
-					 <td><?php echo $row['quantity']?></td>
-					 <td><?php echo $row['rate']?></td>
-					 <td><?php echo $row['cost']?></td>
-					 <td><?php echo $row['SupplierDetails']?></td>
-					 <td><?php echo $row['dateofreceipt']?></td>
-					 <td><?php echo $row['receiptnumber']?></td>
-					 <td><?php echo $row['referencenumber']?></td>
-					 <td><?php echo $row['type']?></td>
-					 <td><?php echo $row['remarks']?></td>
-					 <td> 
-					 <div class="btn-group">
-					 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Action <span class="caret"></span>
-					  </button>
-					  <ul class="dropdown-menu">
-						<li><a type="button" data-toggle="modal" id="editProductModalBtn" data-target="#editProductModal" onclick="editProduct(<?php echo $row['productid']?>)"> <i class="glyphicon glyphicon-edit"></i> Edit</a></li>
-						<li><a type="button" data-toggle="modal" data-target="#removeProductModal" id="removeProductModalBtn" onclick="removeProduct(<?php echo $row['productid']?>)"> <i class="glyphicon glyphicon-trash"></i> Remove</a></li>       
-					  </ul>
-					</div></td>
-					 </tr>	
-	
-				<?php } // /while 				
-				}// if num_rows				
-		
-				?>
 				</table>
 				<!-- /table -->
-
-
-			</div> <!-- /panel-body -->
-		</div> <!-- /panel -->		
-
-	</div> <!-- /col-md-12 -->
 </div> <!-- /row -->
 
 

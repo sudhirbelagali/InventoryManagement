@@ -19,9 +19,10 @@
 
 				<div class="div-action pull pull-right" style="padding-bottom:20px;">
 					<button class="btn btn-default button1" data-toggle="modal" id="addProductModalBtn" data-target="#addProductModal"> <i class="glyphicon glyphicon-plus-sign"></i> Add Product </button>
-				</div> <!-- /div-action -->				
+				</div> <!-- /div-action -->	
+
 				
-				<table class="table" id="manageProductTable">
+				<table class="table" id="manageProductsTable">
 				<thead>
 						<tr>							
 							<th>Product Id</th>
@@ -29,33 +30,6 @@
 							<th style="width:15%;">Options</th>
 						</tr>
 				</thead>
-
-				<?php 
-				$sql = "SELECT * from product";				
-				$result = $connect->query($sql);				
-				$output = array('data' => array());				
-				if($result->num_rows > 0) { 
-				 while($row = $result->fetch_array()) {
-					 ?>
-					 <tr>
-					 <td id="<?php echo $row['productid']?>"><?php echo $row['productid']?></td>
-					 <td><?php echo $row['productName']?></td>
-					 <td> 
-					 <div class="btn-group">
-					 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Action <span class="caret"></span>
-					  </button>
-					  <ul class="dropdown-menu">
-						<li><a type="button" data-toggle="modal" id="editProductModalBtn" data-target="#editProductModal" onclick="editProduct(<?php echo $row['productid']?>)"> <i class="glyphicon glyphicon-edit"></i> Edit</a></li>
-						<li><a type="button" data-toggle="modal" data-target="#removeProductModal" id="removeProductModalBtn" onclick="removeProduct(<?php echo $row['productid']?>)"> <i class="glyphicon glyphicon-trash"></i> Remove</a></li>       
-					  </ul>
-					</div></td>
-					 </tr>	
-	
-				<?php } // /while 				
-				}// if num_rows				
-		
-				?>
 				</table>
 				<!-- /table -->
 

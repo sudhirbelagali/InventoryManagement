@@ -56,11 +56,11 @@
 
       <ul class="nav navbar-nav navbar-right">        
 
-  <li id="navDashboard"><a href="product.php"><i class="glyphicon glyphicon-list-alt"></i>Product</a></li>
+  <li id="navDashboard"><a href="product.php"><i class="glyphicon glyphicon-file"></i>Product</a></li>
   <li id="navDashboard"><a href="productDesciption.php"><i class="glyphicon glyphicon-list-alt"></i>ProductDescription</a></li>
-  <li id="navDashboard"><a href="ReceiveProduct.php"><i class="glyphicon glyphicon-list-alt"></i>Receive Product</a></li>
-  <li id="navDashboard"><a href="department.php"><i class="glyphicon glyphicon-list-alt"></i>Departments</a></li>
-	<li id="navDashboard"><a href="transfer.php"><i class="glyphicon glyphicon-list-alt"></i>Transfer</a></li> 
+  <li id="navDashboard"><a href="ReceiveProduct.php"><i class="glyphicon glyphicon-log-in"></i>Receive Product</a></li>
+  <li id="navDashboard"><a href="department.php"><i class="glyphicon glyphicon-home"></i>Departments</a></li>
+	<li id="navDashboard"><a href="transfer.php"><i class="glyphicon glyphicon-transfer"></i>Transfer</a></li> 
   
  
         <?php if(isset($_SESSION['userId']) && $_SESSION['userId']==1) { ?>
@@ -69,14 +69,24 @@
 		
   
 		<?php  if(isset($_SESSION['userId']) && $_SESSION['userId']==1) { ?>
-        <li id="navReport"><a href="report.php"> <i class="glyphicon glyphicon-check"></i> Report </a></li>
+        <li class="dropdown" id="navReport">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" 
+        aria-expanded="false"> <i class="glyphicon glyphicon-menu-hamburger"></i> 
+        Report</a>
+          <ul class="dropdown-menu">
+          <li id="topNavSetting"><a href="report.php"> <i class="glyphicon glyphicon-triangle-right"></i> by Date</a></li>
+          <li id="topNavSetting"><a href="reportDepartment.php"> <i class="glyphicon glyphicon-triangle-right"></i> by Department</a></li>
+          <li id="topNavSetting"><a href="reportProduct.php"> <i class="glyphicon glyphicon-triangle-right"></i> by Product</a></li>
+            <!-- <a href="report.php"> <i class="glyphicon glyphicon-check"></i> Report </a> -->
+          </ul>
+        </li>
 		<?php } ?>   
         <li class="dropdown" id="navSetting">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-user"></i> <span class="caret"></span></a>
           <ul class="dropdown-menu">    
 			<?php if(isset($_SESSION['userId']) && $_SESSION['userId']==1) { ?>
             <li id="topNavSetting"><a href="setting.php"> <i class="glyphicon glyphicon-wrench"></i> Setting</a></li>
-            <li id="topNavUser"><a href="user.php"> <i class="glyphicon glyphicon-wrench"></i> Add User</a></li>
+            <li id="topNavUser"><a href="user.php"> <i class="glyphicon glyphicon-user"></i> Add User</a></li>
 <?php } ?>              
             <li id="topNavLogout"><a href="logout.php"> <i class="glyphicon glyphicon-log-out"></i> Logout</a></li>            
           </ul>

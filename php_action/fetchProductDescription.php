@@ -1,6 +1,7 @@
 <?php 	
 require_once 'core.php';
-$sql = "SELECT * from product";
+$sql = "SELECT product.productid, product.productName, productDescription.productDescription 
+FROM product INNER JOIN productDescription ON product.productid = productDescription.productid";				
 
 $result = $connect->query($sql);
 
@@ -25,6 +26,7 @@ if($result->num_rows > 0) {
  	$output['data'][] = array( 		
  		$row[0], 
 		$row[1],
+		$row[2],
 		$button
  		); 	
  } // /while 

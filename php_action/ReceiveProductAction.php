@@ -22,11 +22,11 @@ $sql = "INSERT INTO receivedProducts(receiveId, productid, productDescription, q
 if ($connect->query($sql) === TRUE) {
 	echo "<script>alert('Successfully Added!');</script>";
 	header("Refresh:0; url=/inventory/ReceiveProduct.php", true, 30);
-	header("Refresh:0");
+	
 } else {
 	echo "<script>alert('Error while adding the product!');</script>";
 	header("Refresh:0; url=/inventory/ReceiveProduct.php", true, 30);
-	header("Refresh:0");
+
 }
 
 $connect->close();

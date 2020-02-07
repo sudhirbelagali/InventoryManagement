@@ -1,3 +1,15 @@
+var manageCategoriesTable;
+
+$(document).ready(function () {
+	// active top navbar categories
+	$('#navCategories').addClass('active');
+
+	manageCategoriesTable = $('#manageProductsTable').DataTable({
+		'ajax': 'php_action/fetchProductDescription.php',
+		'order': []
+	}); // manage categories Data Table
+});
+
 function editProduct(productId = null) {
 	if(productId) {
 		$("#productId").remove();		
@@ -78,7 +90,8 @@ function editProduct(productId = null) {
 									$('#edit-product-messages').html('<div class="alert alert-success">'+
 				            '<button type="button" class="close" data-dismiss="alert">&times;</button>'+
 				            '<strong><i class="glyphicon glyphicon-ok-sign"></i></strong> '+ response.messages +
-				          '</div>');
+						  '</div>');
+						  manageCategoriesTable.ajax.reload(null, true);
 
 									// remove the mesages
 				          $(".alert-success").delay(500).show(10, function() {
@@ -140,7 +153,7 @@ function removeProduct(productId = null) {
 		            '<button type="button" class="close" data-dismiss="alert">&times;</button>'+
 		            '<strong><i class="glyphicon glyphicon-ok-sign"></i></strong> '+ response.messages +
 		          '</div>');
-
+				  manageCategoriesTable.ajax.reload(null, true);
 						// remove the mesages
 	          $(".alert-success").delay(500).show(10, function() {
 							$(this).delay(3000).hide(10, function() {
