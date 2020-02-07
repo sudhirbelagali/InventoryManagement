@@ -13,9 +13,8 @@ https://www.apachefriends.org/download.html
 ```
 ## Running
 Copy the code and paste it inside the /var/www/html directory and Create the database, SQL file is give in the Database direcotry. Modify the db_connect.php file, give appropriate credentials and open
-```
 * [http://localhost/inventory/](http://localhost/inventory/) localhost
-```
+
 ## Authors
 
 * **Sudhir Belagali** - *Initial work* - [Sudhir Belagali](https://github.com/sudhirbelagali)
